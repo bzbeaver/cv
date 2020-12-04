@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Context Managers</title>
+</head>
+<body>
+	<h3>Context Managers in Python</h3>
+	<p> Learning about context managers and how they work behind the scenes helps us write cleaner and easier to understand code.  Before we talk about context managers, let's talk about the <em>with</em> statement in Python. The "with" statement relates to context managers. </p>
+	
+	<p> The <em>with</em> statement is good for simplifying some of the common resource management patterns in our
+	 code. Resources include system resources such as 
+	<ul>
+		<li>files</li>
+		<li>locks</li>
+		<li>network connections</li>
+	</ul>
+	using the <em>with</em> statement we can abstract some of the functionality that is commonly required for the acquisition and release of these system resources.
+
+	A good example to illustrate the use of the <em>with</em> statement is to open and close a file. In order to manipulate a file, we need to acquire and release a file. An open file is a system resource. Take a look at the code example below, in code 1 we are using a <em>with</em> statement to open and write to a file. Note that the file is automatically closed here. When we use the <em>with</em> statement to open a file, Python is going to make sure that the file is closed once we are done working with it. When we use the <em>with</em> statement, we are creating a context where the file object (fi, in our case) is manipulated (writing to file in our case). As soon as the execution of the file leaves this context, Python will automagically close this file. So Python internally calls fi.close() that will return the file back to the operating system. Code 2 gives us an insight on what happens behind the scenes of the <em>with</em> statement.
+	</p>
+
+	<iframe src="https://trinket.io/embed/python/8f35b2a7cf" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+	<p> So we see here that the <em>with</em> statement can be used to abstract away the try, finally blocks' functionality. Not only that, we don't have to code those extra lines everytime so it is more efficient!
+	</p>
+	<strong>How can you implement the <em>with</em> functionality in your own Python objects?</strong>
+	<p>
+	You can implement this functionality by implementing context managers. So what is a context manager? It is a simple protocol that your objects follow so that they can be used with the <em>with</em> statement. That might seem confusing so let's look at an example. There's two methods that an object needs to support in order to be used with the <em>with</em> statement. Those are 
+	<ul>
+		<li>__enter__</li>
+		<li>__exit__</li>
+	</ul>
+	<iframe src="https://trinket.io/embed/python/316eb0b36a" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+	</p>
+</body>
+</html>
+
